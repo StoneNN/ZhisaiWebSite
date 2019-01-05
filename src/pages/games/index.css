@@ -1,0 +1,68 @@
+.culturePic{
+    width: 98%;
+    height: auto;
+    margin: 1%;
+}
+.caseTitle{
+    text-align: center;
+}
+
+@media screen and (min-width:100px){ 
+    .caseEng{
+        color: rgb(24, 144,255);
+        font-size: 14px;
+        font-weight: bolder;
+        display: inline-block;
+        padding-top: 3%;
+    }
+    .caseCn{
+        font-size: 14px;
+        display: inline-block;
+        margin: 2%;
+    }
+    .caseLine{
+        color: lightgray;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .caseEng{
+        color: rgb(24, 144,255);
+        font-size: 30px;
+        font-weight: bolder;
+        display: inline-block;
+        padding-top: 3%;
+    }
+    .caseCn{
+        display: inline-block;
+        font-size: 22px;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 0;
+    }
+    .caseLine{
+        /* color: lightgray; */
+        color: rebeccapurple;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .caseEng{
+        color: rgb(24, 144,255);
+        font-size: 34px;
+        font-weight: bolder;
+        display: inline-block;
+        padding-top: 3%;
+    }
+    .caseCn{
+        display: inline-block;
+        font-size: 26px;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 0;
+    }
+    .caseLine{
+        /* color: lightgray; */
+        color: red;
+    }
+}
