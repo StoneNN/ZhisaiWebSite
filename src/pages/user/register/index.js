@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-// import { Alert, Checkbox, Modal, Divider } from 'antd';
+import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
 import { Link } from 'dva/router';
-import styles from './index.css';
+import styles from './index.less';
 import 'antd/dist/antd.css';
 import {connect} from 'dva';
 import logoPic from '../../../assets/BridgeLogo.png';
 
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -16,10 +15,10 @@ const residences = [{
     label: 'Zhejiang',
     children: [{
         value: 'hangzhou',
-        label: 'Hangzhou',
+        label: 'HangzhouHangzhouHangzhou',
         children: [{
             value: 'xihu',
-            label: 'West Lake',
+            label: 'West LakeLakeLakeLake',
         }],
     }],
 }, {
@@ -88,26 +87,14 @@ class RegisterBlock extends Component{
         const { autoCompleteResult } = this.state;
     
         const formItemLayout = {
-            // labelCol: {
-            //     xs: { span: 24 },
-            //     sm: { span: 8 },
-            // },
-            // wrapperCol: {
-            //     xs: { span: 24 },
-            //     sm: { span: 16 },
-            // },
-        };
-        const tailFormItemLayout = {
-            // wrapperCol: {
-            //     xs: {
-            //         span: 24,
-            //         offset: 0,
-            //     },
-            //     sm: {
-            //         span: 16,
-            //         offset: 8,
-            //     },
-            // },
+            labelCol: {
+                xs: { span: 24 },
+                sm: { span: 6 },
+            },
+            wrapperCol: {
+                xs: { span: 2 },
+                sm: { span: 18},
+            },
         };
         const prefixSelector = getFieldDecorator('prefix', { 
             initialValue: '86',
@@ -123,7 +110,8 @@ class RegisterBlock extends Component{
         ));
     
         return (
-            <Form onSubmit={this.handleSubmit} >
+        <div className={styles.registerBox}>   
+        <Form onSubmit={this.handleSubmit} >
             <Form.Item
                 {...formItemLayout}
                 label="昵称"
@@ -131,7 +119,7 @@ class RegisterBlock extends Component{
                     {getFieldDecorator('nickname', {
                         rules: [{ required: true, message: '请填写您的昵称!', whitespace: true }],
                     })( 
-                        <Input  style={{ width: '300px' }}/> 
+                        <Input style={{ width: '85%', maxWidth:'300px'}}/> 
                     )}
             </Form.Item>
             
@@ -151,7 +139,7 @@ class RegisterBlock extends Component{
                         { required: true, message: '请填写您的密码!' },
                         { validator: this.validateToNextPassword, }],
                 })(
-                    <Input type="password"  style={{ width: '300px' }}/>
+                    <Input type="password" style={{ width: '85%', maxWidth:'300px'}}/>
                 )}
             </Form.Item>
             <Form.Item
@@ -163,7 +151,7 @@ class RegisterBlock extends Component{
                         { required: true, message: '请再次确认您的密码!',}, 
                         {validator: this.compareToFirstPassword,}],
                 })(
-                    <Input type="password" onBlur={this.handleConfirmBlur}  style={{ width: '300px' }}/>
+                    <Input type="password" onBlur={this.handleConfirmBlur} style={{ width: '85%', maxWidth:'300px'}}/>
                 )}
             </Form.Item>
             
@@ -171,71 +159,80 @@ class RegisterBlock extends Component{
                 {...formItemLayout}
                 label="邮箱"
             >
-              {getFieldDecorator('email', {
-                rules: [{
-                  type: 'email', message: '邮箱格式错误!',
-                }, {
-                  required: false, message: '请填写您的邮箱!',
-                }],
-              })(
-                <Input  style={{ width: '300px' }}/>
-              )}
+                {getFieldDecorator('email', {
+                    rules: [{
+                        type: 'email', message: '邮箱格式错误!',
+                    }, {
+                        required: false, message: '请填写您的邮箱!',
+                    }],
+                })(
+                    <Input style={{ width: '85%', maxWidth:'300px'}}/>
+                )}
             </Form.Item>
             <Form.Item
-              {...formItemLayout}
-              label="住址"
+                {...formItemLayout}
+                label="住址"
             >
-              {getFieldDecorator('residence', {
-                initialValue: ['zhejiang', 'hangzhou', 'xihu'],
-                rules: [{ type: 'array', required: true, message: '请填写您的住址!' }],
-              })(
-                <Cascader options={residences}  style={{ width: '300px' }}/>
-              )}
+                {getFieldDecorator('residence', {
+                    initialValue: ['zhejiang', 'hangzhou', 'xihu'],
+                    rules: [{ type: 'array', required: true, message: '请填写您的住址!' }],
+                })(
+                    <Cascader options={residences} style={{ width: '85%', maxWidth:'300px'}}/>
+                )}
             </Form.Item>
             <Form.Item
-              {...formItemLayout}
-              label="手机号"
+                {...formItemLayout}
+                label="手机号"
             >
-              {getFieldDecorator('phone', {
-                rules: [{ required: true, message: '请填写您的手机号!' }],
-              })(
-                <Input addonBefore={prefixSelector} style={{ width: '300px' }} />
-              )}
+                {getFieldDecorator('phone', {
+                    rules: [{ required: true, message: '请填写您的手机号!' }],
+                })(
+                    <Input addonBefore={prefixSelector} style={{ width: '85%', maxWidth:'300px'}} />
+                )}
             </Form.Item>
             <Form.Item
-              {...formItemLayout}
-              label="验证码"
-              extra="请填写从手机获取的短信验证码."
+                {...formItemLayout}
+                label="验证码"
+                extra="请填写从手机获取的短信验证码."
             >
-              <Row gutter={8}>
-                <Col span={12}>
-                  {getFieldDecorator('captcha', {
+                {getFieldDecorator('captcha', {
                     rules: [{ required: true, message: '请填写验证码!' }],
-                  })(
-                    <Input  style={{ width: '300px' }}/>
-                  )}
-                </Col>
-                <Col span={12}>
-                  <Button>获取验证码</Button>
-                </Col>
-              </Row>
+                })(
+                    <Input style={{ width: '55%', maxWidth:'190px'}}/>
+                )}
+                <Button style={{width: '90px', marginLeft:'8px',fontSize:'10px'}}>获取验证码</Button>
             </Form.Item>
-            <Form.Item {...tailFormItemLayout}>
-              {getFieldDecorator('agreement', {
-                valuePropName: 'checked',
-              })(
-                <Checkbox>我已经阅读并且同意<a href="">智赛棋牌用户协议</a></Checkbox>
-              )}
+            <Form.Item
+                style={{textAlign:'center'}}
+            >
+                {getFieldDecorator('agreement', {
+                    valuePropName: 'checked',
+                })(
+                    <Checkbox style={{fontSize:'12px'}}>
+                        我已经阅读并且同意
+                        <Link to="/user/userAgreement">智赛棋牌用户协议</Link>
+                    </Checkbox>
+                )}
             </Form.Item>
 
-            <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">注册</Button>
+            <Form.Item 
+                style={{textAlign:'center'}}
+            >
+                <Button
+                    type="primary" 
+                    htmlType="submit"
+                >
+                    注册
+                </Button>
             </Form.Item>
-          </Form>
+        </Form>
+        </div> 
         );
-      }
+    }
 }
 
-const WrappedRegistrationForm = Form.create()(RegisterBlock);
+
+
+const WrappedRegistrationForm = Form.create({ name:'注册表单'})(RegisterBlock);
 
 export default WrappedRegistrationForm;

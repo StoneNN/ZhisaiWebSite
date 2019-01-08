@@ -143,7 +143,7 @@ class UserBlock extends Component{
                         <Link  className={styles.forgetPwd} to="/user/forgetPWD">忘记密码</Link>
                     </div>
                     <Submit>登录</Submit>
-                    <Link className={styles.registerBtn} to="/user/register">去注册 >></Link>
+                    <Link className={styles.registerBtn} to="/user/register">牌手注册 >></Link>
                     <Divider></Divider>
                     <Link className={styles.sponsorLogin} to="/user/loginSponsor">--- 主办方登录 ---</Link>
                 </Login>

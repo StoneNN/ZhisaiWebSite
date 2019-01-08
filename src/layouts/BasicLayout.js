@@ -104,7 +104,7 @@ class BasicLayout extends Component {
         const menu = (
             <Menu className={styles.dropDownMenu}>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="http:" style={{ color: '#888888' }}>个人信息</a>
+                    <Link to="user/userInfo" style={{ color: '#888888' }}>个人信息</Link>
                 </Menu.Item>
                 <Menu.Item>
                     <a target="_blank" rel="noopener noreferrer" href="http:" style={{ color: '#888888' }}>消息</a>
