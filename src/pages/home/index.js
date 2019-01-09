@@ -1,6 +1,6 @@
 import React, { Component }from 'react';
 import {Menu, Carousel } from 'antd';
-import styles from './index.css';
+import styles from './index.less';
 import topPic1 from '../../assets/topPic1.jpg';
 import topPic2 from '../../assets/topPic2.jpg';
 import topPic3 from '../../assets/topPic3.jpg';
@@ -9,6 +9,7 @@ import majiangPic from '../../assets/majiang.png';
 import guojixqPic from '../../assets/gjxq1.jpg';
 import zhongguoxqPic from '../../assets/zgxq.jpg';
 import doudizhuPic from '../../assets/doudizhu.jpg';
+import { Link } from 'dva/router';
 
 
 const SubMenu = Menu.SubMenu;
@@ -30,6 +31,12 @@ class NavigationBar extends Component{
   render() {
     return (
       <React.Fragment>
+
+{/* 时事新闻 */}
+        <div className={styles.bigNews}>
+          时事新闻
+          <span><Link to='./news' style={{color:'cadetblue'}}>更多 >></Link></span>
+        </div>
         <Carousel autoplay className={styles.toppicCarousel}>
           <img className={styles.toppic} src={topPic1}  alt="新闻图片-1" />
           <img className={styles.toppic} src={topPic2}  alt="新闻图片-2" />
@@ -37,7 +44,10 @@ class NavigationBar extends Component{
         </Carousel>
 
 {/* 热门棋牌 */}
-        <div className={styles.majorTitle}>热门棋牌</div>
+        <div className={styles.majorTitle}>
+          热门棋牌
+          <span><Link to='./teaching' style={{color:'cadetblue'}}>更多 >></Link></span>
+        </div>
         <div className={styles.majorList}>
           <div className={styles.majorDiv}>
             <img className={styles.majorPic} src={majiangPic}  alt="技术推广" />
@@ -61,8 +71,11 @@ class NavigationBar extends Component{
 
           </div>
         </div>
-{/* 热门赛事 */}
-        <div className={styles.caseTitle}>热门赛事</div>
+{/* 最新赛事 */}
+        <div className={styles.caseTitle}>
+          最新赛事
+          <span><Link to='./games' style={{color:'cadetblue'}}>更多 >></Link></span>
+          </div>
         <div className={styles.caseList}>
           <img className={styles.casePic} src={topPic1}  alt="案例-1" />
           <img className={styles.casePic} src={topPic2}  alt="案例-2" />

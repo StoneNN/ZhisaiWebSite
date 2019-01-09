@@ -8,7 +8,6 @@ import logoPic from '../assets/zhiSaiLogo.png';
 import logOut from '../assets/logOut.png';
 import * as routes from '../common/navigationRoutes';
 import { Link } from 'dva/router';
-import { dedent } from 'tslint/lib/utils';
 import { connect } from 'dva';
 
 import Message from './Message';
