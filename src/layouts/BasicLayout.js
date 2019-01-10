@@ -133,7 +133,9 @@ class BasicLayout extends Component {
                 <Header className={styles.header}>
                     <Row className={styles.headerFlex}>
                         <Col xs={18} sm={12} xl={12} xxl={8}>
-                            <img className={styles.logo} src={logoPic} />
+                            <Link to='/home'>
+                                <img className={styles.logo} src={logoPic} />
+                            </Link> 
                         </Col>
                         <Col xs={6} sm={12} xl={12} xxl={16} className={styles.userCol}>
                             {userAvatar}

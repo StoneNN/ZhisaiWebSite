@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styles from './NoneLayout.css';
 import { Layout } from 'antd';
 import logoPic from '../assets/zhiSaiLogo.png';
+import { Link } from 'dva/router';
 
 const{Header, Content, Footer} = Layout;
 
@@ -14,7 +15,10 @@ class NoneLayout extends Component{
 
                 {/* 页头 */}
                 <Header className={styles.header}>
-                    <img className={styles.logo} src={logoPic} />
+                    <Link to='/home'>
+                        <img className={styles.logo} src={logoPic} />
+                    </Link>
+                    
                 </Header>
                 {/* 内容 */}
                 <Content className={styles.content}>

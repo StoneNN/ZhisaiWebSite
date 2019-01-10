@@ -19,7 +19,7 @@ class UserBlock extends Component{
         autoLogin: true,
         modalVisible:false,
 
-        lName:'',
+        lAccount:'',
         pwd:''
     }
     // 账号密码错误弹窗
@@ -54,12 +54,12 @@ class UserBlock extends Component{
                     if (!err) {
                         console.log('Received values of form: ', values);
                         this.setState({
-                            lName:values.username, 
+                            lAccount:values.account, 
                             pwd:values.password
                         });
                         this.props.dispatch({
                             type:'login_m/login',
-                            payload:{name:values.username, pwd:values.password}
+                            payload:{account:values.account, pwd:values.password}
                         });
                     }
                 }
@@ -78,10 +78,10 @@ class UserBlock extends Component{
             autoLogin: e.target.checked,
         });
         if (this.state.autoLogin === true) {
-            localStorage.setItem('lName',this.state.lName);
+            localStorage.setItem('lAccount',this.state.lAccount);
             localStorage.setItem('pwd',this.state.pwd);
         } else {
-            localStorage.removeItem('lName');
+            localStorage.removeItem('lAccount');
             localStorage.removeItem('pwd');
         }
     }
@@ -109,8 +109,8 @@ class UserBlock extends Component{
                             />
                         }
                         <UserName 
-                            name="username" 
-                            placeholder="用户名" 
+                            name="account" 
+                            placeholder="账号" 
                             rules={[{required: true, message: '用户名不能为空!'}]}
                         />
                         <Password 

@@ -1,6 +1,5 @@
 import { Row, Col, Menu, Icon } from "antd";
 import { Link } from "dva/router";
-
 const SubMenu = Menu.SubMenu;
 
 class Sider extends React.Component {
@@ -62,18 +61,17 @@ export default function(props) {
     console.log(props);
     const {location:{pathname}}=props
     return (
-        <div style={{width:'100%'}}>
-            <Row style={{backgroundColor:'white',height:'100%'}}>
-                <Col xl={1} md={1}></Col>
-                <Col xl={5} md={3}>
-                    <Sider pathname={pathname}/>
-                </Col>
-                <Col xl={16} md={19}>
-                <div style={{width:'100%', height:'30px',textAlign:"center",lineHeight:'50px'}}></div>
-                    { props.children }
-                </Col>
-                <Col xl={1} md={1}></Col>
-            </Row>
-        </div>
+        <Row style={{backgroundColor:'white', width:'100%', height:'100%'}}>
+            <Col xl={1} md={1}></Col>
+            <Col xl={4} md={4}>
+                <Sider pathname={pathname}/>
+            </Col>
+            <Col xl={1} md={1}></Col>
+            <Col xl={17} md={17}>
+            <div style={{width:'100%', height:'30px',textAlign:"center",lineHeight:'50px'}}></div>
+                { props.children }
+            </Col>
+            <Col xl={1} md={1}></Col>
+        </Row>
     );
 }

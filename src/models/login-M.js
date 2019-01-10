@@ -9,7 +9,8 @@ export default {
     state:{
       modalVisible:false,
       avatar:logOut,
-      inOutState:false
+      inOutState:false,
+      userInfo:{ }
     },
 
     effects:{
@@ -55,8 +56,9 @@ export default {
           console.log('login-M----payload------',payload.userData[0].avatar);
             return {
               ...state,
-              avatar:payload.userData[0].avatar,
-              inOutState:true
+              avatar:payload.userData[0].userInfo.avatar,
+              inOutState:true,
+              userInfo:payload.userData[0].userInfo
             }
         },
         showModal(state) {
