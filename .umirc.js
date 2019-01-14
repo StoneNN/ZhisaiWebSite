@@ -8,7 +8,7 @@ export default {
       dva: true,
       dynamicImport: true,
       title: 'NewWebsite',
-      dll: true,
+      dll: false,
       routes: {
         exclude: [],
       },

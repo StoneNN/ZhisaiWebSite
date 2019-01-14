@@ -1,16 +1,80 @@
 import React, {Component} from 'react';
-import { Row, Col, Card } from 'antd';
-import styles from './index.css';
+import { Card } from 'antd';
+import styles from './index.less';
 import culturePic from '../../assets/culture.jpg';
 import tellUsPic from '../../assets/tellUs.png';
 import logo from '../../assets/logo1.png'
+import { Link } from 'dva/router';
+
+
+const tabList = [{
+    key: 'matchVideo',
+    tab: '比赛录像',
+}, {
+    key: 'mvpTeaching',
+    tab: '名家课堂',
+}];
+
+const contentList = {
+    matchVideo: <div style={{width:'100%'}}>
+        <div className={styles.videoBox}>
+            <video src="http://player.youku.com/player.php/sid/XMzkxODU2NzY1Ng==/v.swf" controls="controls"></video>
+        </div>
+        <div  className={styles.videoBox}>
+            <video src="http://player.youku.com/player.php/sid/XMzkxODU2NzY1Ng==/v.swf" controls="controls"></video>
+        </div>
+        <div  className={styles.videoBox}>
+            <video src="http://player.youku.com/player.php/sid/XMzkxODU2NzY1Ng==/v.swf" controls="controls"></video>
+        </div>
+        <div  className={styles.videoBox}>
+            <video src="http://player.youku.com/player.php/sid/XMzkxODU2NzY1Ng==/v.swf" controls="controls"></video>
+        </div>
+        <div  className={styles.videoBox}>
+            <video src="http://player.youku.com/player.php/sid/XMzkxODU2NzY1Ng==/v.swf" controls="controls"></video>
+        </div>
+    </div>,
+    mvpTeaching: <p>content2content2content2content2content2content2content2content2content2content2content2content2content2content2</p>,
+};
 
 class MineBlock extends Component{
+    
+    state = {
+        key: 'matchVideo',
+        noTitleKey: 'app',
+    }
+    
+    onTabChange = (key, type) => {
+        console.log(key, type);
+        this.setState({ [type]: key });
+    }
 
     render(){
         return(
             <React.Fragment>
                 <img className={styles.culturePic} src={culturePic} alt="企业文化"/>
+
+                <div className={styles.videoClass}>
+                    视频教程
+                    <span><Link to='./' style={{color:'cadetblue'}}>更多 >></Link></span>
+                </div>
+                <div>
+                    <Card
+                    style={{ width: '100%', backgroundColor:'red' }}
+                    title=""
+                    bordered={false}
+                    // extra={<a href="#">更多</a>}
+                    tabList={tabList}
+                    defaultActiveTabKey={'matchVideo'}
+                    activeTabKey={this.state.key}
+                    onTabChange={(key) => { this.onTabChange(key, 'key'); }}
+                    >
+                    {contentList[this.state.key]}
+                    </Card>
+            
+                </div> 
+
+
+
                 <div className={styles.usTitle}>
                     <span className={styles.usEng}>ABOUT US</span>
                     <p><span className={styles.usLine}>─────────</span><span className={styles.usCn}>关于我们</span><span className={styles.usLine}>─────────</span></p>

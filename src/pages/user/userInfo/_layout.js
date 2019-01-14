@@ -5,22 +5,45 @@ const SubMenu = Menu.SubMenu;
 class Sider extends React.Component {
 
     constructor(props){
+        console.log(props);
         super(props);
-        this.state = {
-            current: 'userI',
+        const {pathname}=this.props;
+        var pathArr = pathname.split('/');
+        if (pathArr[pathArr.length-1] === 'userInfo') {
+            this.state = {
+                current: 'userI',
+            };
+        } else if (pathArr[pathArr.length-1] === 'baseSet'){
+            this.state = {
+                current: 'baseE',
+            };
+        } else if (pathArr[pathArr.length-1] === 'baseSet'){
+            this.state = {
+                current: 'baseE',
+            };
+        } else if (pathArr[pathArr.length-1] === 'pwdSet'){
+            this.state = {
+                current: 'pwdE',
+            };
+        } else if (pathArr[pathArr.length-1] === 'phoneSet'){
+            this.state = {
+                current: 'phoneE',
+            };
+        } else if (pathArr[pathArr.length-1] === 'idSet'){
+            this.state = {
+                current: 'idE',
+            };
         }
     }
 
     handleClick = (e) => {
-        console.log('click ', e);
+        console.log('click', e);
         this.setState({
             current: e.key,
         });
     }
 
     render() {
-        const {pathname}=this.props;
-        console.log(pathname)
         return (
             <div style={{width:'100%'}}>
                 <div style={{width:'100%', height:'30px',textAlign:"center",lineHeight:'50px'}}></div>
@@ -66,7 +89,7 @@ export default function(props) {
             <Col xl={4} md={4}>
                 <Sider pathname={pathname}/>
             </Col>
-            <Col xl={1} md={1}></Col>
+            {/* <Col xl={1} md={1}></Col> */}
             <Col xl={17} md={17}>
             <div style={{width:'100%', height:'30px',textAlign:"center",lineHeight:'50px'}}></div>
                 { props.children }

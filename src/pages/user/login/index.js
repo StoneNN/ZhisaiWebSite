@@ -152,7 +152,7 @@ class UserBlock extends Component{
                     <Modal
                         title="提示"
                         centered
-                        modalVisible={this.props.loginForm.modalVisible}
+                        visible={this.props.loginForm.modalVisible}
                         onOk={this.handleOk.bind(this)}
                         onCancel={this.handleCancel.bind(this)}
                         okText="确定"
